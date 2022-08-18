@@ -10,49 +10,50 @@ export const MajSoulMajorRanks = [
 export const MajSoulMajorRanksInChinese = ["初心", "雀士", "雀杰", "雀豪", "雀圣", "魂天"] as const
 
 export const MaxRankScores = [20, 80, 200, 600, 800, 1000, 1200, 1400, 2000, 2800, 3200, 3600, 4000, 6000, 9000] as const
+export const TenhouMaxRankScores = [20, 20, 20, 20, 40, 60, 80, 100, 100, 100, 400, 800, 1200, 1600, 2000, 2400, 2800, 3200, 3600, 4000] as const
 
 export type MajSoulRank = [typeof MajSoulMajorRanks[number], number]
 
 export const TenhouRanks = [
-    "Newbie", "9 Kyu", "8 Kyu", "7 Kyu", "6 Kyu", "5 Kyu", "4 Kyu", "3 Kyu", "2 Kyu", "1 Kyu"
-    , "1 Dan", "2 Dan", "3 Dan", "4 Dan", "5 Dan", "6 Dan", "7 Dan", "8 Dan", "9 Dan", "10 Dan", "Tenhou"
+    "新人", "9 级", "8 级", "7 级", "6 级", "5 级", "4 级", "3 级", "2 级", "1 级"
+    , "初段", "二段", "三段", "四段", "五段", "六段", "七段", "八段", "九段", "十段", "天凤位"
 ] as const
 
 export type TenhouRank = typeof TenhouRanks[number]
 export const TenhouRankMap = new Map<number, TenhouRank>(TenhouRanks.map((rank, index) => [index, rank]))
 
 export interface IPlayer {
-    majSoulName: string;
-    majSoulRank: number;
-    majSoulUid: number;
+    mahjsoulName: string;
+    mahjsoulRank: number;
+    mahjsoulUid: number;
     tenhouName?: string;
-    tenhouRank?: TenhouRank;
+    tenhouRank?: number;
     name?: string;
     qqNum?: string
 }
 
 export class Player implements IPlayer {
-    public majSoulName: string;
-    public majSoulRank: number;
+    public mahjsoulName: string;
+    public mahjsoulRank: number;
     public tenhouName?: string;
-    public tenhouRank?: TenhouRank;
-    public majSoulUid: number;
+    public tenhouRank?: number;
+    public mahjsoulUid: number;
     public name?: string;
     public qqNum?: string
 
     constructor(playerMessage: IPlayer) {
-        this.majSoulName = playerMessage.majSoulName
+        this.mahjsoulName = playerMessage.mahjsoulName
         this.tenhouName = playerMessage.tenhouName
         this.tenhouRank = playerMessage.tenhouRank
-        this.majSoulUid = playerMessage.majSoulUid
+        this.mahjsoulUid = playerMessage.mahjsoulUid
         this.name = playerMessage.name
-        this.majSoulRank = playerMessage.majSoulRank
+        this.mahjsoulRank = playerMessage.mahjsoulRank
         this.qqNum = playerMessage.qqNum
     }
 
     getMajSoulRankList(): MajSoulRank {
-        const majorRankId = Math.floor(this.majSoulRank % 10000 / 100)
-        const minorRankId = this.majSoulRank % 100
+        const majorRankId = Math.floor(this.mahjsoulRank % 10000 / 100)
+        const minorRankId = this.mahjsoulRank % 100
         const majorRank = majorRankId < 7 ? MajSoulMajorRanks[majorRankId - 1] : "Celestial"
         return [majorRank, minorRankId]
     }

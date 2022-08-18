@@ -1,10 +1,10 @@
 export default interface IPlayerRankResponse{
     id: number,
-    nickname: string,
+    nickName: string,
     level: {
         id: number,
         score: number,
         delta: number,
     },
-    latest_timestamp: number
+    latestTimestamp: number
 }
