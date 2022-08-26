@@ -103,7 +103,7 @@ export default function Registration() {
             contestId: contest?.id
         }
         try {
-            if (authCode == null) {
+            if (authCode == null || authCode === "") {
                 const result = (await api.post(`Team/${contest?.id}?inviteCode=${inviteCode}`, newTeam)).data
                 setAuthCode(result.authorizationCode)
             } else {

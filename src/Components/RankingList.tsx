@@ -138,7 +138,7 @@ export default function RankingList(props: {
                                     </Fade>}
                                     <Fade in={executed || executing} >
                                         { scoreData != null ?
-                                            <RankingListChart scoreData={scoreData} height={scoreData.length / 12 * 500}/> : <Box/>
+                                            <RankingListChart scoreData={scoreData} height={Math.max(scoreData.length / 12 * 500, 184)}/> : <Box/>
                                         }
                                     </Fade>
                                 </Stack>
