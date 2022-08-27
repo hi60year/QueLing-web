@@ -39,6 +39,9 @@ export default function RankingList(props: {
                 const gameId = entry[0]
                 const games = entry[1] as object[]
                 const classDatum = classData!.find((datum) => datum["rid"] === gameId && +datum["round"] === index + selectedRounds[0])
+
+                if (classDatum == null) return
+
                 const lastGame: any = games[games.length - 1]
                 const resultPairs: [string, number][] = []
                 for (let i = 1; i <= 4; i++) {
