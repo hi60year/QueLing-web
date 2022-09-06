@@ -193,11 +193,11 @@ export default function ContestManagement() {
 
                 try {
                     let thPromiseData: ITenhouPlayerRankResponse = (await api.get(`GetTenhouRanking?name=${member.tenhouName}`)).data
-                    if (thPromiseData.assumept[4].level !== member.tenhouRank) {
+                    if (+thPromiseData.assumept[4].level !== member.tenhouRank) {
                         rankingNotConsistentError.push(
                             `队伍 ${team.name} 中 天凤名称填写为 ${member.tenhouName} 的选手段位信息不一致。实际段位为${TenhouRanks[thPromiseData.assumept[4].level]}`
                         )
-                        team.members[index].tenhouRank = thPromiseData.assumept[4].level ?? 0
+                        team.members[index].tenhouRank = +thPromiseData.assumept[4].level ?? 0
                     }
                 } catch {
                     rankingInaccessibleError.push(`队伍 ${team.name} 中 天凤名称填写为 ${member.tenhouName} 的选手段位请求失败。`)
