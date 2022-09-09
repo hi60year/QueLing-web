@@ -285,14 +285,14 @@ export function TeamTable(props: { teamMessage: ITeam, canToggleToSmall?: boolea
                                                                                                 ? 100
                                                                                                 : memberDetailRanks.get(mem.mahjsoulUid)![1] / MaxRankScores[
                                                                                             Math.floor((memberDetailRanks.get(mem.mahjsoulUid)![0] % 10000 / 100) - 1) * 3
-                                                                                            + memberDetailRanks.get(mem.mahjsoulUid)![0] % 100
+                                                                                            + memberDetailRanks.get(mem.mahjsoulUid)![0] % 100 - 1
                                                                                                 ] * 100
                                                                                         }
                                                                                     />
                                                                                     <Typography variant={"caption"} sx={{color: grey[500]}}>
                                                                                         {`${memberDetailRanks.get(mem.mahjsoulUid)![1]}/${MaxRankScores[
                                                                                         Math.floor((memberDetailRanks.get(mem.mahjsoulUid)![0] % 10000 / 100) - 1) * 3
-                                                                                        + memberDetailRanks.get(mem.mahjsoulUid)![0] % 100
+                                                                                        + memberDetailRanks.get(mem.mahjsoulUid)![0] % 100 - 1
                                                                                             ]}`}
                                                                                     </Typography>
                                                                                 </Stack>)
