@@ -19,7 +19,7 @@ import {
     Switch,
     Table,
     TableBody,
-    TableCell,
+    TableCell, TableContainer,
     TableHead,
     TableRow,
     TextField, ThemeProvider,
@@ -191,7 +191,7 @@ export function TeamTable(props: { teamMessage: ITeam, canToggleToSmall?: boolea
             paddingTop: "20px",
             paddingX: "30px",
             position: "relative",
-            backgroundColor: blueGrey[100]
+            backgroundColor: blueGrey[100],
         }}>
             <CardContent>
                 <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
@@ -207,7 +207,8 @@ export function TeamTable(props: { teamMessage: ITeam, canToggleToSmall?: boolea
                     </Stack>
                 </Stack>
                 <Fade in={true} style={{transitionDuration: "1s"}}><Paper elevation={4} sx={{marginTop: "20px"}}>
-                    <Table ref={containerRef}>
+                    <TableContainer sx={{maxHeight: "490px"}}>
+                    <Table ref={containerRef} stickyHeader>
                         <TableHead>
                             <TableRow>
                                 {
@@ -366,6 +367,7 @@ export function TeamTable(props: { teamMessage: ITeam, canToggleToSmall?: boolea
                             }
                         </TableBody>
                     </Table>
+                    </TableContainer>
                 </Paper></Fade>
             </CardContent>
             <CardContent sx={{
