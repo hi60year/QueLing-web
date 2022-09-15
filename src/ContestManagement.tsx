@@ -209,8 +209,8 @@ export default function ContestManagement() {
 
             rankingRequirements.forEach(requirement => {
                 let num = team.members.filter(mem => {
-                    let msSatisfied = requirement[1] === 0 ? false : mem.mahjsoulRank > requirement[1]
-                    let thSatisfied = requirement[2] === 0 || mem.tenhouRank == null ? false : mem.tenhouRank > requirement[2]
+                    let msSatisfied = requirement[1] === 0 ? false : mem.mahjsoulRank >= requirement[1]
+                    let thSatisfied = requirement[2] === 0 || mem.tenhouRank == null ? false : mem.tenhouRank >= requirement[2]
                     return msSatisfied || thSatisfied
                 }).length
                 if (num < (requirement[0] === 0 ? team.members.length : requirement[0])) {
