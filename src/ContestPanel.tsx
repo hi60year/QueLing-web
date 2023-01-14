@@ -11,7 +11,7 @@ import {
     Table, TableBody, TableCell, TableHead, TableRow,
     Tabs, TextField,
     Toolbar,
-    Typography
+    Typography, useTheme
 } from "@mui/material";
 import QueLingAppBar from "./Components/QueLingAppBar";
 import {ContestState, IContest} from "./Models/Contest";
@@ -124,6 +124,7 @@ export default function ContestPanel() {
     const [inviteCode, setInviteCode] = useState("")
     const [inviteCodeError, setInviteCodeError] = useState(false)
     const [submittingInviteCode, setSubmittingInviteCode] = useState(false)
+    const theme = useTheme()
     const nav = useNavigate()
 
     const setNthColor = (n: number, color: string) => {
@@ -189,8 +190,14 @@ export default function ContestPanel() {
                     alignItems: 'center'
                 }}
             >
-                <Toolbar/>
-                <Card sx={{mt: 5, mx: 9, maxWidth: "1272px", flexGrow: 1, height: "80%"}}>
+                <Card sx={{maxWidth: "1272px", flexGrow: 1, height: "80%",
+                    [theme.breakpoints.up('md')]: {
+                        mx: 9, mt: 5
+                    },
+                    [theme.breakpoints.down('md')]: {
+                        mx: 0, mt: 0
+                    }
+                }}>
                     <CardContent sx={{height: "100%"}}>
                         <Box sx={{display: "flex", justifyContent: "center", mt: 2}}>
                             {
@@ -207,12 +214,15 @@ export default function ContestPanel() {
                         </Stack>
                         <Box sx={{
                             borderColor: grey[500],
-                            borderWidth: "0.5px",
-                            borderRadius: "10px",
-                            borderStyle: "solid",
-                            p: 3,
-                            mt: 5,
-                            mx: 3,
+                            [theme.breakpoints.up('md')]: {
+                                borderWidth: "0.5px",
+                                borderRadius: "10px",
+                                borderStyle: "solid",
+                                p: 3,
+                                mt: 5,
+                                mx: 3,
+                            },
+
                             flexGrow: 1,
                             height: "calc(100% - 130px)",
                             display: "flex",

@@ -8,6 +8,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import ContestPanel from './ContestPanel';
 import Registration from "./Registration";
 import ContestManagement from "./ContestManagement";
+import TempScoreCounter from "./TempScoreCounter";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -18,6 +19,7 @@ root.render(
         <BrowserRouter>
             <Routes>
                 <Route path={"/"} element={<App />} />
+                <Route path={"/tempsc"} element={<TempScoreCounter />} />
                 <Route path={"/contests/:contestId"} element={<ContestPanel/>} />
                 <Route path={"/contests/:contestId/register"} element={<Registration/>} />
                 <Route path={"/contests/:contestId/team/:teamId/management"} element={<Registration />} />

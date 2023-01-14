@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 export default function QueLingAppBar() {
 
     const theme = useTheme();
-    const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
+        const isSmall = useMediaQuery(theme.breakpoints.down("sm"));
     const [applyContest, setApplyContest] = useState(false);
     const nav = useNavigate()
 
